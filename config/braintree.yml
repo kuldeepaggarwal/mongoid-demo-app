@@ -1,0 +1,5 @@
+development:
+  environment: 'sandbox'
+  merchant_id: "p4c394gm7f2fv4jm"
+  public_key: "485w78prxv23b7qd"
+  private_key: "e599a4928f883f6c2ef018f117c3b843"

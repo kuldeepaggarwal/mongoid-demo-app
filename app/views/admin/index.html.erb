@@ -1,0 +1,4 @@
+<h1>Welcome</h1>
+<p>It's <%= Time.now %></p>
+<h5>We have <%= pluralize(Order.count,"order") %></h5>
+<%= render :template => 'orders/index', :locals => { :@orders => @orders } %>

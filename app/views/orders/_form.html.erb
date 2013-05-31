@@ -1,0 +1,49 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, size: 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, size: 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_area :address, size: '56x3' %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, size: 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :pay_type %><br />
+    <%= f.select :pay_type, Order::PAYMENT_TYPES, promt: 'Select a payment method' %>
+  </div>
+  <div class="field">
+    <%= label_tag :card_number %><br />
+    <%= text_field_tag :card_number %>
+  </div>
+  <div class="field">
+    <%= label_tag :month %><br />
+    <%= select_month Date.today, :add_month_numbers => true, :field_name => 'month' %>
+  </div>
+  <div class="field">
+    <%= label_tag :year %><br />
+    <%= select_year(Date.today, :start_year => Date.today.year, :end_year => 3000) %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Place Order' %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<h1>Listing orders</h1>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Address</th>
+    <th>Email</th>
+    <th>Pay type</th>
+    <th>Total Amount</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @orders.each do |order| %>
+  <tr>
+    <td><%= order.first_name %></td>
+    <td><%= order.last_name %></td>
+    <td><%= order.address %></td>
+    <td><%= order.email %></td>
+    <td><%= Order::PAYMENT_TYPES.key(order.pay_type) %></td>
+    <td><%= order.total_amount %></td>
+    <td><%= link_to 'Show', order %></td>
+    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Order', new_order_path %>
+<p><%= will_paginate @orders %></p>

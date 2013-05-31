@@ -1,0 +1,43 @@
+<% if notice %>
+  <h4 style = "text-align:center; color: red;"><%= notice %><h4>
+<% end %>
+<div class = "depot_form" >
+  <%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <fieldset>
+    <legend>Enter User Details</legend>
+      <div>
+        <%= f.label :uname %><br />
+        <%= f.text_field :uname %>
+      </div>
+      <% unless session[:new_user] %>
+        <div>
+          <%= f.label :old, "Old Password" %><br />
+          <%= f.password_field :old %>
+        </div>
+      <% end %>
+      <div>
+        <%= f.label :password, "Password" %><br />
+        <%= f.password_field :password %>
+      </div>
+      <div>
+        <%= f.label :password_confirmation, 'Confirm Password' %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+
+      <div>
+        <%= f.submit %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

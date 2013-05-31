@@ -1,0 +1,37 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<p>
+  <b>First Name:</b>
+  <%= @order.first_name %>
+</p>
+<p>
+  <b>Last Name:</b>
+  <%= @order.last_name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @order.address %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @order.email %>
+</p>
+
+<p>
+  <b>Pay type:</b>
+  <%= Order::PAYMENT_TYPES.key(@order.pay_type) %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @order.total_amount %>
+</p>
+<p>
+  <p>following items in the order:</p>
+<%= render @order.line_items %></p>
+</p>
+<%= link_to 'Back', orders_path %>
