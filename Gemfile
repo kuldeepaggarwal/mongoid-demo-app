@@ -10,6 +10,7 @@ gem "activemerchant", "~> 1.31.1"
 gem 'braintree', "~> 2.23.0"
 gem 'will_paginate_mongoid', "~> 1.1.0"
 gem 'delayed_job_mongoid', "~> 2.0.0"
+gem 'mysql2', '~> 0.3.11'
 
 group :development do
   gem 'debugger', "~> 1.6.0"
